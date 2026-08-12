@@ -30,9 +30,9 @@ resource "aws_db_instance" "app" {
   engine_version = var.rds_engine_version
   instance_class = var.rds_instance_class
 
-  allocated_storage     = var.rds_allocated_storage_gb
-  storage_encrypted     = true
-  db_name               = var.rds_db_name
+  allocated_storage      = var.rds_allocated_storage_gb
+  storage_encrypted      = true
+  db_name                = var.rds_db_name
   username               = var.rds_master_username
   password               = var.rds_master_password
   db_subnet_group_name   = aws_db_subnet_group.app.name

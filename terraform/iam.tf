@@ -65,7 +65,7 @@ resource "aws_iam_role_policy_attachment" "glue_service_role" {
 
 data "aws_iam_policy_document" "glue_s3_access" {
   statement {
-    sid = "ReadCleanedOutput"
+    sid     = "ReadCleanedOutput"
     actions = [
       "s3:GetObject",
       "s3:ListBucket",
@@ -76,7 +76,7 @@ data "aws_iam_policy_document" "glue_s3_access" {
     ]
   }
   statement {
-    sid = "WriteParquetAndAssets"
+    sid     = "WriteParquetAndAssets"
     actions = [
       "s3:GetObject",
       "s3:PutObject",
@@ -118,7 +118,7 @@ resource "aws_iam_role" "redshift_copy" {
 
 data "aws_iam_policy_document" "redshift_s3_read" {
   statement {
-    sid = "ReadParquetForCopy"
+    sid     = "ReadParquetForCopy"
     actions = [
       "s3:GetObject",
       "s3:ListBucket",

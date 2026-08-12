@@ -66,7 +66,7 @@ resource "aws_cloudwatch_metric_alarm" "glue_job_failures" {
   treat_missing_data  = "notBreaching"
 
   dimensions = {
-    JobName = aws_glue_job.clean_to_redshift.name
+    JobName  = aws_glue_job.clean_to_redshift.name
     JobRunId = "ALL"
     Type     = "count"
   }

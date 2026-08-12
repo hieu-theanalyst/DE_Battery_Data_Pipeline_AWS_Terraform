@@ -27,14 +27,14 @@ resource "aws_glue_connection" "redshift" {
 
   connection_properties = {
     JDBC_CONNECTION_URL = "jdbc:redshift://${aws_redshift_cluster.analytics.endpoint}/${var.redshift_db_name}"
-    USERNAME             = var.redshift_master_username
-    PASSWORD             = var.redshift_master_password
+    USERNAME            = var.redshift_master_username
+    PASSWORD            = var.redshift_master_password
   }
 
   physical_connection_requirements {
     availability_zone      = aws_redshift_cluster.analytics.availability_zone
     security_group_id_list = [aws_security_group.glue_connection.id]
-    subnet_id               = local.subnet_ids[0]
+    subnet_id              = local.subnet_ids[0]
   }
 }
 
@@ -54,16 +54,16 @@ resource "aws_glue_job" "clean_to_redshift" {
   }
 
   default_arguments = {
-    "--job-language"        = "python"
-    "--SOURCE_BUCKET"        = aws_s3_bucket.output.bucket
-    "--SOURCE_PREFIX"        = ""
-    "--PARQUET_BUCKET"       = aws_s3_bucket.parquet.bucket
-    "--PARQUET_PREFIX"       = "battery_test_data/"
-    "--REDSHIFT_CONNECTION"  = aws_glue_connection.redshift.name
-    "--REDSHIFT_TABLE"       = "public.battery_test_data"
-    "--REDSHIFT_TMP_DIR"     = "s3://${aws_s3_bucket.glue_assets.bucket}/redshift-tmp/"
-    "--TempDir"              = "s3://${aws_s3_bucket.glue_assets.bucket}/glue-tmp/"
-    "--enable-metrics"       = "true"
+    "--job-language"                     = "python"
+    "--SOURCE_BUCKET"                    = aws_s3_bucket.output.bucket
+    "--SOURCE_PREFIX"                    = ""
+    "--PARQUET_BUCKET"                   = aws_s3_bucket.parquet.bucket
+    "--PARQUET_PREFIX"                   = "battery_test_data/"
+    "--REDSHIFT_CONNECTION"              = aws_glue_connection.redshift.name
+    "--REDSHIFT_TABLE"                   = "public.battery_test_data"
+    "--REDSHIFT_TMP_DIR"                 = "s3://${aws_s3_bucket.glue_assets.bucket}/redshift-tmp/"
+    "--TempDir"                          = "s3://${aws_s3_bucket.glue_assets.bucket}/glue-tmp/"
+    "--enable-metrics"                   = "true"
     "--enable-continuous-cloudwatch-log" = "true"
   }
 

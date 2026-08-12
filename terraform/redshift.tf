@@ -26,9 +26,9 @@ resource "aws_security_group" "redshift" {
 
 resource "aws_redshift_cluster" "analytics" {
   cluster_identifier = "${local.name_prefix}-redshift"
-  node_type           = var.redshift_node_type
-  cluster_type         = var.redshift_cluster_type
-  number_of_nodes       = var.redshift_cluster_type == "multi-node" ? var.redshift_number_of_nodes : null
+  node_type          = var.redshift_node_type
+  cluster_type       = var.redshift_cluster_type
+  number_of_nodes    = var.redshift_cluster_type == "multi-node" ? var.redshift_number_of_nodes : null
 
   database_name   = var.redshift_db_name
   master_username = var.redshift_master_username
@@ -39,9 +39,9 @@ resource "aws_redshift_cluster" "analytics" {
   iam_roles                 = [aws_iam_role.redshift_copy.arn]
 
   # Demo-friendly defaults -- revisit for anything beyond a portfolio project.
-  publicly_accessible        = false
-  skip_final_snapshot        = true
-  encrypted                  = true
+  publicly_accessible = false
+  skip_final_snapshot = true
+  encrypted           = true
 
   tags = {
     Name = "${local.name_prefix}-redshift"
