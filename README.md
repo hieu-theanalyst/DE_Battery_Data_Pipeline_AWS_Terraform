@@ -5,9 +5,7 @@ analyzing battery-cycler test data. Built as an academic / personal portfolio
 project to demonstrate a realistic OLTP → S3 → Lambda → Glue → Redshift → BI
 architecture.
 
-> **Status:** portfolio / academic project. Resource names, ARNs, and
-> credentials in this repo are placeholders — swap them for your own before
-> deploying.
+> **Status:** portfolio / academic project.
 
 ## Architecture
 
