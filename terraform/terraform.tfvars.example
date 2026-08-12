@@ -1,0 +1,19 @@
+# Copy to terraform.tfvars and fill in. Never commit the real file --
+# it's already in .gitignore.
+
+aws_region  = "us-east-1"
+project_name = "battery-data-pipeline"
+environment  = "dev"
+
+input_bucket_name       = "battery-data-input"
+output_bucket_name      = "battery-data-output"
+parquet_bucket_name     = "battery-data-parquet"
+glue_assets_bucket_name = "battery-data-glue-assets"
+
+# Prefer setting these via environment variables instead of tfvars:
+#   export TF_VAR_rds_master_password="..."
+#   export TF_VAR_redshift_master_password="..."
+# rds_master_password      = "CHANGE_ME"
+# redshift_master_password = "CHANGE_ME"
+
+alarm_notification_email = "you@example.com"
