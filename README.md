@@ -91,7 +91,7 @@ print(df.head())
 
 ```bash
 cd terraform
-cp terraform.tfvars.example terraform.tfvars   # fill in your own values
+cp terraform.tfvars.example terraform.tfvars   
 terraform init
 terraform plan
 terraform apply
